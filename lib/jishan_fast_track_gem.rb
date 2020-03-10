@@ -82,6 +82,7 @@ class Solar_panel_rebate_egilibility_check
 end
 
 class Provided_files_check
+attr_reader :eligible_list
   def initialize(name)
     @name = name
   end
@@ -128,6 +129,7 @@ class Provided_files_check
       end
   end    
   def eligible_quote(url)
+    eligible_list = []
     retailer = URI.parse(url).host
     csv_text = File.read('cec_approved_retailers.csv')
     csv = CSV.parse(csv_text, headers: true)
@@ -139,18 +141,31 @@ class Provided_files_check
 
       if result != nil
         puts "Eligible retailer."
+        eligible_list << @name
+        p eligible_list
       else
         puts "Not Eligible retailer."  
      end
   end
+
+  def remove_applicant(name)
+    @eligible_list.delete(name)
+    end
+    
 end
 
 # ruby = Solar_panel_rebate_egilibility_check.new("Ruby")
 # ruby.ower_of_the_property
 
-ruby_files = Provided_files_check.new("ruby_files")
-# ruby_files.income_proof
-ruby_files.retailer_quote
+john_files = Provided_files_check.new("john_files")
+# # ruby_files.income_proof
+john_files.retailer_quote
+# john_files.remove_applicant("john_files")
+peta_files= Provided_files_check.new("peta_files")
+peta_files.retailer_quote
+
+
+
 
 
 
