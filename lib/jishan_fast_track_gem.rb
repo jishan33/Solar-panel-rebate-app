@@ -165,23 +165,54 @@ attr_reader :eligible_list
     @@processing_number += 1
   end
 end
+
+# rebate up to  1888aud.
+# system size in kw => max solar rebate
+# 2kw  => 30 STCs x $40 = $1,200
+# 3 kw =>  46 STCs x $40 = $1,840
+# 5kw =>  77 STCs x $40 = $3,080
+
+class Rebate_calculator
+  def initialize(name)
+  @name = name
+  end
+  def calculate_rebate(kw, postcode)
+    csv_text = File.read('stc_rating.csv')
+    csv = CSV.parse(csv_text, headers: true)
+    result = csv.find do |num|
+    stc_table = num.to_hash
+    postcode >= stc_table['Postcode from'].to_i && postcode <= stc_table['Postcode to'].to_i
+    end
+    p result['Rating']
+
+  end
+
+
+end
+
+
 # ruby = Solar_panel_rebate_egilibility_check.new("Ruby")
 # ruby.ower_of_the_property
 
-john_files = Provided_files_check.new("john_files")
+# john_files = Provided_files_check.new("john_files")
 # # ruby_files.income_proof
 # john_files.retailer_quote
 # john_files.remove_applicant("john_files")
-peta_files= Provided_files_check.new("peta_files")
+# peta_files= Provided_files_check.new("peta_files")
 # peta_files.retailer_quote
 
 
-a_list = Manage_list.new("a_list")
-a_list.add_to_eligible_list("John")
-a_list.add_to_eligible_list("Peta")
+# a_list = Manage_list.new("a_list")
+# a_list.add_to_eligible_list("John")
+# a_list.add_to_eligible_list("Peta")
 # a_list.remove_applicant("John")
-p Manage_list.display_processing_number
-p a_list.eligible_list
+# p Manage_list.display_processing_number
+# p a_list.eligible_list
+
+john_rebate = Rebate_calculator.new("John_rebate")
+john_rebate.calculate_rebate(2, 3163)
+
+
 
 
 
