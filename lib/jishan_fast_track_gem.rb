@@ -166,28 +166,33 @@ attr_reader :eligible_list
   end
 end
 
-# rebate up to  1888aud.
-# system size in kw => max solar rebate
-# 2kw  => 30 STCs x $40 = $1,200
-# 3 kw =>  46 STCs x $40 = $1,840
-# 5kw =>  77 STCs x $40 = $3,080
 
 class Rebate_calculator
   def initialize(name)
-  @name = name
+    @name = name
+    @stc_rating = 0
+    @stc = 0
   end
-  def calculate_rebate(kw, postcode)
+  def stc_postcode_rating(postcode)
     csv_text = File.read('stc_rating.csv')
     csv = CSV.parse(csv_text, headers: true)
     result = csv.find do |num|
     stc_table = num.to_hash
     postcode >= stc_table['Postcode from'].to_i && postcode <= stc_table['Postcode to'].to_i
     end
-    p result['Rating']
-
+    @stc_rating = result['Rating'].to_f
   end
 
+  def stc_calculator(kw, deeming_year)
+    @stc = kw * @stc_rating * deeming_year
+  end
 
+  def rebate
+  stc_value = 37.5
+  rebate_amount = @stc * stc_value
+  rebate_amount > 1888 ? 1888 : rebate_amount
+  # https://www.tradeingreen.com.au/prices-93.html
+  end
 end
 
 
@@ -210,7 +215,9 @@ end
 # p a_list.eligible_list
 
 john_rebate = Rebate_calculator.new("John_rebate")
-john_rebate.calculate_rebate(2, 3163)
+john_rebate.stc_postcode_rating(3163)
+john_rebate.stc_calculator(3, 15)
+p john_rebate.rebate
 
 
 
