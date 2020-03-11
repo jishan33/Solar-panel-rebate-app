@@ -8,9 +8,9 @@ require_relative 'manage_lists'
 # Help file includes *comprehensive* instructions which *accurately* describe: steps to install the application; dependencies required by the application; system/hardware requirements; features of the application.
 
 john = Solar_panel_rebate_egilibility_check.new
-john.ower_of_the_property
+# john.ower_of_the_property
 john_files = Provided_files_check.new
-# john_files.income_proof
+john_files.income_proof
 
 # list_zone_1 = Manage_list.new
 # list_zone_2 = Manage_list.new
