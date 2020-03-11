@@ -9,36 +9,32 @@ require 'logging'
 # Help file includes *comprehensive* instructions which *accurately* describe: steps to install the application; dependencies required by the application; system/hardware requirements; features of the application.
 
 ruby = Solar_panel_rebate_egilibility_check.new("Ruby")
-ruby.ower_of_the_property
+# ruby.ower_of_the_property
 
 john_files = Provided_files_check.new("john_files")
 # john_files.income_proof
-john_rebate = Rebate_calculator.new("john_rebate")
+john_rebate = Rebate_calculator.new
 # john_rebate.stc_postcode_rating(3000)
 # john_rebate.stc_calculator(5, 5)
 # p john_rebate.rebate
 
-
-
-# john_files.retailer_quote
 # peta_files= Provided_files_check.new("peta_files")
 # peta_files.retailer_quote
 
 
-# a_list = Manage_list.new("a_list")
+# a_list = Manage_list.new
 # a_list.add_to_eligible_list("John")
 # a_list.add_to_eligible_list("Peta")
 # a_list.add_to_eligible_list("Peta")
 # a_list.remove_applicant("John")
 
-
 # p Manage_list.display_processing_number
 # p a_list.eligible_list
 
-# john_rebate = Rebate_calculator.new("John_rebate")
-# john_rebate.stc_postcode_rating(3163)
-# john_rebate.stc_calculator(3, 15)
-# p john_rebate.rebate
+john_rebate = Rebate_calculator.new
+john_rebate.stc_postcode_rating(3163)
+john_rebate.stc_calculator(3, 15)
+p john_rebate.rebate
 
 
 
