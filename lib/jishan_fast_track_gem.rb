@@ -4,6 +4,7 @@ require 'csv'
 
 
 
+
 class Solar_panel_rebate_egilibility_check
   def initialize(name)
     @name = name
@@ -88,6 +89,12 @@ class Provided_files_check
   def income_proof
     puts "provide the proof of income document URL (only .pdf or .doc): "
     url = gets.chomp
+    if url =~ URI::regexp
+      puts "valid file URL."
+    else 
+      puts "not valid file URL."
+    end
+
     file_type = File.extname(URI.parse(url).path)
     if file_type == ".pdf" || file_type == ".doc"
       puts "file upload succeeded." 
@@ -102,6 +109,12 @@ class Provided_files_check
     loop do
       puts "provide identity documents' URL (only .pdf or .doc): "
       url = gets.chomp
+      if url =~ URI::regexp
+        puts "valid file URL."
+      else 
+        puts "not valid file URL."
+      end
+
       file_type = File.extname(URI.parse(url).path)
       if file_type == ".pdf" || file_type == ".doc"
         file_arr << file_type
@@ -109,16 +122,21 @@ class Provided_files_check
       else 
         puts "upload failed. please provide valid URL to .pdf or .doc ."
       end
-      p file_arr
     break if file_arr.size == 2
     end
-    eligible_quote
+    retailer_quote
   end
 
   def retailer_quote
     puts "Provide the eligible quote URL (only .pdf or .doc): "
     url = gets.chomp
     file_type = File.extname(URI.parse(url).path)
+        
+        if url =~ URI::regexp
+        puts "valid file URL."
+      else 
+        puts "not valid file URL."
+      end
 
       if file_type == ".pdf" || file_type == ".doc"
         puts "file upload succeeded." 
@@ -190,7 +208,7 @@ class Rebate_calculator
   def rebate
   stc_value = 37.5
   rebate_amount = @stc * stc_value
-  rebate_amount > 1888 ? 1888 : rebate_amount
+  rebate_amount > 1888 ? 1888 : rebate_amount.truncate(2)
   # https://www.tradeingreen.com.au/prices-93.html
   end
 end
@@ -200,28 +218,33 @@ end
 # ruby.ower_of_the_property
 
 # john_files = Provided_files_check.new("john_files")
-# # ruby_files.income_proof
+# john_files.income_proof
+# john_rebate = Rebate_calculator.new("john_rebate")
+# john_rebate.stc_postcode_rating(3000)
+# john_rebate.stc_calculator(5, 5)
+# p john_rebate.rebate
+
+
+
 # john_files.retailer_quote
 # john_files.remove_applicant("john_files")
 # peta_files= Provided_files_check.new("peta_files")
 # peta_files.retailer_quote
 
 
-# a_list = Manage_list.new("a_list")
-# a_list.add_to_eligible_list("John")
-# a_list.add_to_eligible_list("Peta")
+a_list = Manage_list.new("a_list")
+a_list.add_to_eligible_list("John")
+a_list.add_to_eligible_list("Peta")
+a_list.add_to_eligible_list("Peta")
 # a_list.remove_applicant("John")
-# p Manage_list.display_processing_number
-# p a_list.eligible_list
 
-john_rebate = Rebate_calculator.new("John_rebate")
-john_rebate.stc_postcode_rating(3163)
-john_rebate.stc_calculator(3, 15)
-p john_rebate.rebate
+p Manage_list.display_processing_number
+p a_list.eligible_list
 
-
-
-
+# john_rebate = Rebate_calculator.new("John_rebate")
+# john_rebate.stc_postcode_rating(3163)
+# john_rebate.stc_calculator(3, 15)
+# p john_rebate.rebate
 
 
 
