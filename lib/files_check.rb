@@ -1,5 +1,6 @@
 require 'uri'
 require 'csv'
+require 'colorize'
 
 
 
@@ -7,8 +8,9 @@ class Provided_files_check
   def initialize(name)
     @name = name
   end
+  
   def income_proof
-    puts "provide the proof of income document URL (only .pdf or .doc): "
+    puts "provide the proof of income document URL (only .pdf or .doc): ".colorize(:light_blue)
     url = gets.chomp
     if url =~ URI::regexp
       puts "valid file URL."

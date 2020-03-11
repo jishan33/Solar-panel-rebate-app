@@ -3,10 +3,13 @@ require_relative 'rebate_calculator'
 require_relative 'files_check'
 require_relative 'eligibility_check'
 require_relative 'manage_lists'
+require 'logging'
 
+# logging write the intro
+# Help file includes *comprehensive* instructions which *accurately* describe: steps to install the application; dependencies required by the application; system/hardware requirements; features of the application.
 
-# ruby = Solar_panel_rebate_egilibility_check.new("Ruby")
-# ruby.ower_of_the_property
+ruby = Solar_panel_rebate_egilibility_check.new("Ruby")
+ruby.ower_of_the_property
 
 john_files = Provided_files_check.new("john_files")
 # john_files.income_proof

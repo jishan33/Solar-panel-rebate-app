@@ -1,16 +1,17 @@
 require 'uri'
 require 'csv'
+require 'colorize'
 
 
 class Solar_panel_rebate_egilibility_check
   def initialize(name)
     @name = name
   end
-
+  
   def ower_of_the_property
-    puts "Are you the property owner and the current occupier?"
-    puts "1. yes"
-    puts "2. no"
+    puts "Are you the property owner and the current occupier?".colorize(:light_blue)
+    puts "1. yes".colorize(:light_blue)
+    puts "2. no".colorize(:light_blue)
     answer = gets.chomp.to_i
     if answer == 1
       puts "check the next question."
