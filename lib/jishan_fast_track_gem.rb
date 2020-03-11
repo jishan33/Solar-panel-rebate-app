@@ -11,7 +11,7 @@ ruby = Solar_panel_rebate_egilibility_check.new("Ruby")
 # ruby.ower_of_the_property
 
 john_files = Provided_files_check.new("john_files")
-john_files.eligible_quote("www.wrong.com")
+john_files.two_forms_of_identity
 john_rebate = Rebate_calculator.new
 # john_rebate.stc_postcode_rating(3000)
 # john_rebate.stc_calculator(5, 5)
