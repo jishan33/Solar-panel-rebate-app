@@ -1,7 +1,7 @@
 require 'uri'
 require 'csv'
 require 'colorize'
-
+require 'table_print'
 
 
 class Provided_files_check
@@ -13,17 +13,16 @@ class Provided_files_check
     puts "provide the proof of income document URL (only .pdf or .doc): ".colorize(:light_blue)
     url = gets.chomp
     if url =~ URI::regexp
-      puts "valid file URL."
     else 
-      puts "not valid file URL."
+      puts "It's not a valid file URL."
     end
 
     file_type = File.extname(URI.parse(url).path)
     if file_type == ".pdf" || file_type == ".doc"
-      puts "file upload succeeded." 
+      puts "File upload succeeded." 
       two_forms_of_identity
     else 
-      puts "upload failed. please provide valid URL to .pdf or .doc ."
+      puts "upload failed. please provide .pdf or .doc document."
     end
   end
 
@@ -35,7 +34,7 @@ class Provided_files_check
       if url =~ URI::regexp
         puts "valid file URL."
       else 
-        puts "not valid file URL."
+        puts "It's not a valid file URL."
       end
 
       file_type = File.extname(URI.parse(url).path)
@@ -43,7 +42,7 @@ class Provided_files_check
         file_arr << file_type
         puts "file upload succeeded." 
       else 
-        puts "upload failed. please provide valid URL to .pdf or .doc ."
+      puts "upload failed. please provide .pdf or .doc document."
       end
     break if file_arr.size == 2
     end
@@ -55,17 +54,16 @@ class Provided_files_check
     url = gets.chomp
     file_type = File.extname(URI.parse(url).path)
         
-        if url =~ URI::regexp
-        puts "valid file URL."
+      if url =~ URI::regexp  
       else 
-        puts "not valid file URL."
+        puts "It's not a valid file URL."
       end
 
       if file_type == ".pdf" || file_type == ".doc"
         puts "file upload succeeded." 
         eligible_quote(url)
       else 
-        puts "upload failed. please provide valid URL to .pdf or .doc ."
+        puts "upload failed. please provide .pdf or .doc document."
       end
   end    
   def eligible_quote(url)
@@ -81,7 +79,8 @@ class Provided_files_check
       if result != nil
         puts "Eligible retailer."
       else
-        puts "Not Eligible retailer."  
+        puts "Not Eligible retailer. Please check the provided list of CEC  approved retailers below"
+        tp csv.map { |row| row.to_hash }, {:NAME => {display_name: "Company Name"}}, {:URL => {width: 35}}
      end
   end    
 end
