@@ -7,33 +7,30 @@ require_relative 'manage_lists'
 #  write the intro
 # Help file includes *comprehensive* instructions which *accurately* describe: steps to install the application; dependencies required by the application; system/hardware requirements; features of the application.
 
-ruby = Solar_panel_rebate_egilibility_check.new("Ruby")
-ruby.ower_of_the_property
+john = Solar_panel_rebate_egilibility_check.new
+john.ower_of_the_property
+john_files = Provided_files_check.new
+# john_files.income_proof
 
-john_files = Provided_files_check.new("john_files")
-# john_files.two_forms_of_identity
-john_rebate = Rebate_calculator.new
-# john_rebate.stc_postcode_rating(3000)
-# john_rebate.stc_calculator(5, 5)
-# p john_rebate.rebate
+# list_zone_1 = Manage_list.new
+# list_zone_2 = Manage_list.new
 
-# peta_files= Provided_files_check.new("peta_files")
-# peta_files.retailer_quote
+# list_zone_1.add_applicant("John")
+# list_zone_1.add_applicant("Sab")
 
+# list_zone_2.add_applicant("Peppy")
+# list_zone_2.add_applicant("sup")
+# list_zone_2.remove_applicant("Peppy")
 
-# a_list = Manage_list.new
-# a_list.add_to_eligible_list("John")
-# a_list.add_to_eligible_list("Peta")
-# a_list.add_to_eligible_list("Peta")
-# a_list.remove_applicant("John")
+# p list_zone_1.list_detail
+# p list_zone_2.list_detail
 
 # p Manage_list.display_processing_number
-# p a_list.eligible_list
 
-# john_rebate = Rebate_calculator.new
-# john_rebate.stc_postcode_rating(3163)
-# john_rebate.stc_calculator(3, 15)
-# p john_rebate.rebate
+
+
+
+
 
 
 

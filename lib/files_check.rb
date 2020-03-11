@@ -4,12 +4,11 @@ require "colorize"
 require "table_print"
 
 class Provided_files_check
-  def initialize(name)
-    @name = name
+  def initialize
   end
 
   def income_proof
-    puts "provide the proof of income document URL (only .pdf or .doc): ".colorize(:light_blue)
+    puts "provide the proof of income document URL (only .pdf or .doc): ".colorize(:blue)
     url = gets.chomp
     return unless valid_file_check(url)
     return unless file_type_check(url)
@@ -19,7 +18,7 @@ class Provided_files_check
   def two_forms_of_identity
     file_arr = []
     loop do
-      puts "provide identity documents' URL (only .pdf or .doc): "
+      puts "provide identity documents' URL (only .pdf or .doc): ".colorize(:blue)
       url = gets.chomp
       return unless valid_file_check(url)
       return unless file_type_check(url)
@@ -32,11 +31,12 @@ class Provided_files_check
 
 
   def retailer_quote
-    puts "Provide the eligible quote URL (only .pdf or .doc): "
+    puts "Provide the eligible quote URL (only .pdf or .doc): ".colorize(:blue)
     url = gets.chomp
     file_type = File.extname(URI.parse(url).path)
     return unless valid_file_check(url)
     return unless file_type_check(url)
+    eligible_quote(url)
   end
 
   def eligible_quote(url)
