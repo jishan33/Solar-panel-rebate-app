@@ -163,27 +163,6 @@ class Provided_files_check
   end    
 end
 
-class Manage_list
-attr_reader :eligible_list
-@@processing_number = 0
-  def initialize(list_name)
-    @list_name = list_name
-    @eligible_list = []
-  end
-  def self.display_processing_number
-    @@processing_number
-  end
-  def remove_applicant(name)
-    @eligible_list.delete(name)
-    @@processing_number -= 1
-  end
-
-  def add_to_eligible_list(name)
-    @eligible_list << name
-    @@processing_number += 1
-  end
-end
-
 
 class Rebate_calculator
   def initialize(name)
@@ -214,6 +193,29 @@ class Rebate_calculator
 end
 
 
+
+class Manage_list
+attr_reader :eligible_list
+@@processing_number = 0
+  def initialize(list_name)
+    @list_name = list_name
+    @eligible_list = []
+  end
+  def self.display_processing_number
+    @@processing_number
+  end
+  def remove_applicant(name)
+    @eligible_list.delete(name)
+    @@processing_number -= 1
+  end
+
+  def add_to_eligible_list(name)
+    @eligible_list << name
+    @@processing_number += 1
+  end
+end
+
+
 # ruby = Solar_panel_rebate_egilibility_check.new("Ruby")
 # ruby.ower_of_the_property
 
@@ -232,10 +234,10 @@ end
 # peta_files.retailer_quote
 
 
-a_list = Manage_list.new("a_list")
-a_list.add_to_eligible_list("John")
-a_list.add_to_eligible_list("Peta")
-a_list.add_to_eligible_list("Peta")
+# a_list = Manage_list.new("a_list")
+# a_list.add_to_eligible_list("John")
+# a_list.add_to_eligible_list("Peta")
+# a_list.add_to_eligible_list("Peta")
 # a_list.remove_applicant("John")
 
 p Manage_list.display_processing_number
