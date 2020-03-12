@@ -4,25 +4,25 @@ Welcome to your new gem! In this directory, you'll find the files you need to be
 
 TODO: Delete this and the text above, and describe your gem
 
+## Requirements
+  - Ruby is required to install the Gem
+
 ## Installation
 
-Add this line to your application's Gemfile:
+Install the gem on your local system:
 
-```ruby
-gem 'jishan_fast_track_gem'
+```
+gem install jishan_fast_track_gem
 ```
 
 And then execute:
 
-    $ bundle install
+    $ jishan_fast_track_gem
 
-Or install it yourself as:
-
-    $ gem install jishan_fast_track_gem
 
 ## Usage
 
-TODO: Write usage instructions here
+After executing the program, 
 
 ## Development
 
