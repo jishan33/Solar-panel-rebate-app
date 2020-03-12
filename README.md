@@ -4,24 +4,37 @@ https://github.com/jishan33/T1A2
 
 Software Development Plan
 --------------------------
-The main purpose of building this app is to try to combine my coding knowledge and engineering background at an entry-level. Hopefully, I can extend this experience to further apply more complex coding concepts into the engineering field in the near future. 
-I like the idea of using technology to ease people’s life and simultaneously providing a more environmental environment. Solar panel rebate is a great program to encourage people to use more sustainable energy to support a more independent and efficient lifestyle. Making the program process more accessible is a great way to promote the concept of combing technology and sustainable energy. 
+This application will make the solar panel rebate process easier for users and managers as the whole process can be completed in one terminal app. 
 
-This application will make the rebate process easier for users and managers as all the process can be completed in one terminal app. 
+Users can check if they are eligible by answering a short questionnaire. Also, they can easily check whether all the files have been successfully uploaded and are of the correct type. The rebate can be easily evaluated by simply provide postcode, kw and deeming year. 
 
-Users can check if they are eligible by answering a short questionnaire. Also, they can easily check whether all the files have been successfully uploaded. The rebate can be easily evaluated by simply provide postcode, kw and deeming year. 
+The manager can easily arrange the lists of applicants and assign applicants to the appropriate lists as well as remove them.
 
-The manager can easily arrange the lists of applicants and assign applicants to the appropriate lists as well as remove it.
+Although the information for the solar panel rebates can be easily accessed online, the application process sometimes can be difficult.
 
-Although the information for the solar panel rebates can be easily accessed online, the applying process sometimes can be hectic.
+In order to reduce the difficulty of the application process, transforming the long and bland list into a more interactive questionnaire might increase the number of potential applicants. 
 
-In order to reduce the difficulty of applying process. Transforming the long and bland list into a more interactive questionnaire might increase the number of potential applicants. 
+Also, providing the rebate assessment and the eligibility check on the same platform encourages the potential applicants to go through the process. Allocating the rebate calculator at the beginning and at the end could potentially increase their interests in this rebate program.
 
-Also, providing the rebate assessment and the eligibility check on the same platform encourages the potential applicants to go through the process. Allocating the rebate calculator at the beginning could potentially increase their interests in this rebate program.
+The target audiences are the property owners with less than 180,000 household income combined income who would like to install some solar panels on their properties.  
 
-The target audiences are the property owners with less than 180,000 households combined income who would like to install some solar panels on their properties.  
+This terminal app is a comparably easy process for them to use. They probably would play around with this app to have some basic ideas about this rebate program. And further, apply for it with the required documents.
 
-This terminal app is a comparably easy process for them to use. They probably would play around with this app to have some basic ideas about this rebate program. And further, apply it with the required documents.
+### Functions to be implemented:
+- `instruction (eligibility check)`
+    - This function can kick off the application by presenting the user with a description of how to use the program and kick off the initial sequence of questions.
+    
+- `eligibility_response`
+    - This function will be called to asses the answers provided by the user and determine whether or not they are eligible and inform them
+- `answer_check`
+    - There will be many questions with the same yes/no/exit response, therefore it makes sense to implement an answer check method to avoid duplicating code for each question. This function can take in the answer provided by the user and add to the list of ineligable answers / exit the program / prompt for the next question as appropriate.
+- `valid_file_check`
+    - The user will be prompted to submit several different files with similar requirements. As such, it makes sense to create a method that has common validation rules and ensures that the user provides a correct file in each case.
+- `stc_postcode_rating`
+    - Reads in a csv which lists postcode ranges as their respective STC ratings to be used later in the rebate function. This data is then used to determine the STC rating based on the users postcode. 
+- `rebate`
+    - Once the user has determined their eligibility and provided the details of their solar panel installation and location, the rebate method is used to calculate the approximate amount of rebate the user would be eligible to receive under the scheme.
+
 
 Three features description
 ----------------------------
