@@ -1,11 +1,8 @@
-# require "jishan_fast_track_gem/version"
 require_relative 'rebate_calculator'
 require_relative 'files_check'
 require_relative 'eligibility_check'
 require_relative 'manage_list'
 
-#  write the intro
-# Help file includes *comprehensive* instructions which *accurately* describe: steps to install the application; dependencies required by the application; system/hardware requirements; features of the application.
 john = Eligibility_check.new("John")
 john.instruction
 john_files = Files_check.new("John Files")
