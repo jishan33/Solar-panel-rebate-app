@@ -4,7 +4,8 @@ require "colorize"
 require "table_print"
 
 class Files_check
-  def initialize
+  def initialize(name)
+    @name = name
   end
 
   def income_proof

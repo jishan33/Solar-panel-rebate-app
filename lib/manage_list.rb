@@ -2,7 +2,8 @@
 class Manage_list
 attr_reader :list_detail
 @@processing_number = 0
-  def initialize
+  def initialize(name)
+    @name = name
     @list_detail = []
   end
   def self.display_processing_number

@@ -5,7 +5,8 @@ require 'gemoji'
 
 
 class Eligibility_check
-  def initialize
+  def initialize(name)
+    @name = name
     @answers =[]
   end
   
