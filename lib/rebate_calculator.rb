@@ -52,9 +52,6 @@ class Rebate_calculator
 
   def stc_calculator
     @stc = (@kw * @stc_rating * @deeming_year).floor
-
-        p self
-    
     rebate
   end
 

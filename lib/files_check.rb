@@ -57,7 +57,7 @@ attr_reader :file_list
 
   def eligible_quote(url)
     retailer = URI.parse(url).host
-    csv_text = File.read("cec_approved_retailers.csv")
+    csv_text = File.read(__dir__ + "/cec_approved_retailers.csv")
     csv = CSV.parse(csv_text, headers: true)
 
     result = csv.find do |web|
