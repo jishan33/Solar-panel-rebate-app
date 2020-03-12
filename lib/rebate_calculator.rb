@@ -11,10 +11,23 @@ class Rebate_calculator
     @stc = 0
   end
 
+  def instruction
+    puts "Hello, this is a rebate calculator. If you don't have the following information with you, this calculator can not evaluate the accurate rebate amount for you. The required information is the postcode, kilowatt and solar panel lifetime. Note. if your response is not in numbers, the rebate amount will always be zero. Also please make sure the provided postcode is accurate. Thank you.".colorize(:light_blue)
+    ask_parameters
+  end
+
+  private
   def ask_parameters
+    loop do
     puts "what is your postcode?"
       postcode = gets.chomp.to_i
-      @postcode = postcode
+      if postcode > 9999
+      puts "It's not a valid postcode, please type a valid postcode.".colorize(:light_yellow)
+      end
+    break if postcode < 9999
+     @postcode = postcode
+    end
+    
     puts "How many kilowatt is your future solar panel?"
       kw = gets.chomp.to_i
       @kw = kw

@@ -11,7 +11,7 @@ class Eligibility_check
   end
 
   def instruction
-    puts "Hello, this is a solar panel rebate eligibility check process, please follow the questions and them with a valid input 1 is yes and 2 is no. Simpliy type 1 or 2 will be sufficient. Alothough you type any other inputs, this program will guide you through the whole process. if you wish to leave the process immediately type 3".colorize(:blue)
+    puts "Hello, this is a solar panel rebate eligibility check process, please follow the questions and them with a valid input 1 is yes and 2 is no. Simply type 1 or 2 will be sufficient. Although you respond with any other inputs, this program will guide you through the whole process. if you wish to leave the process type 3 as your response.".colorize(:blue)
     puts "---"*20
     ower_of_the_property
   end

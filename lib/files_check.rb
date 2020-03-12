@@ -11,7 +11,7 @@ attr_reader :file_list
   end
 
   def instruction
-    puts "Hello, this is a files check process. It will firstly check whether your URL is valid or not. If it is valid, it will furthur check whether is a supported file type. The supported file types for this process are .pdf and .doc. Alothough, you provide unsupported files or not valid file, it will ask you to provid the valid and supported file types document agian. If you wish to leave the process, simply type 3.".colorize(:blue)
+    puts "Hello, this is a files check process. It will check whether your URL is valid or not first. If it is valid, it will further check whether is a supported file type. The supported file types for this process are .pdf and .doc. Although you provide unsupported files or not valid file, it will ask you to provide the valid and supported file types document again. If you wish to leave the process, simply type 3 to respond.".colorize(:blue)
     puts "--" *30
     income_proof
   end
