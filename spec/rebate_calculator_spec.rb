@@ -12,4 +12,16 @@ RSpec.describe RebateCalculator, "#rebate" do
     rebate_amount = rebate_1.instruction
     expect(rebate_amount).to eq(1087.5)
   end
+
+  it "calculates rebate for different postcode" do
+    rebate_2 = RebateCalculator.new
+    postcode = 900
+    kw = 5
+    deeming_years = 5
+
+    allow(rebate_2).to receive(:gets).and_return("#{postcode}\n", "#{kw}\n", "#{deeming_years}\n")
+
+    rebate_amount = rebate_2.instruction
+    expect(rebate_amount).to eq(1425.0)
+  end
 end
