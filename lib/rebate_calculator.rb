@@ -1,7 +1,6 @@
 require 'csv'
 require 'colorize'
 
-
 class RebateCalculator
   def initialize
     @postcode = 0
@@ -17,34 +16,37 @@ class RebateCalculator
   end
 
   private
+
   def ask_parameters
     loop do
-    puts "what is your postcode?"
+      puts "what is your postcode?"
       postcode = gets.chomp.to_i
       if postcode > 9999
-      puts "It's not a valid postcode, please type a valid postcode.".colorize(:light_yellow)
+        puts "It's not a valid postcode, please type a valid postcode.".colorize(:light_yellow)
       end
-     @postcode = postcode
+      @postcode = postcode
       if postcode < 9999
         break
       end
     end
-    
+
     puts "How many kilowatt is your future solar panel?"
-      kw = gets.chomp.to_i
-      @kw = kw
+    kw = gets.chomp.to_i
+    @kw = kw
     puts "What is the lifetime of your future solar panel?"
-      deeming_year = gets.chomp.to_i
-      @deeming_year = deeming_year
+    deeming_year = gets.chomp.to_i
+    @deeming_year = deeming_year
     stc_postcode_rating
   end
+
   private
+
   def stc_postcode_rating
     csv_text = File.read(__dir__ + '/stc_rating.csv')
     csv = CSV.parse(csv_text, headers: true)
     result = csv.find do |num|
-    stc_table = num.to_hash
-    @postcode >= stc_table['Postcode from'].to_i && @postcode <= stc_table['Postcode to'].to_i
+      stc_table = num.to_hash
+      @postcode >= stc_table['Postcode from'].to_i && @postcode <= stc_table['Postcode to'].to_i
     end
     @stc_rating = result['Rating'].to_f
     stc_calculator
@@ -56,9 +58,9 @@ class RebateCalculator
   end
 
   def rebate
-  stc_value = 37.5
-  rebate_amount = @stc * stc_value
-    if rebate_amount > 1888 
+    stc_value = 37.5
+    rebate_amount = @stc * stc_value
+    if rebate_amount > 1888
       puts "Total amount of your solar panel rebate has reach the maximum, which is $1888 aud.".colorize(:red)
     else
       puts "Total amount of your solar panel rebate is $#{rebate_amount} aud".colorize(:red)

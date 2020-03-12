@@ -7,7 +7,6 @@ RSpec.describe RebateCalculator, "#rebate" do
     kw = 5
     deeming_years = 5
 
-
     allow(rebate_1).to receive(:gets).and_return("#{postcode}\n", "#{kw}\n", "#{deeming_years}\n")
 
     rebate_amount = rebate_1.instruction

@@ -4,7 +4,7 @@ require "colorize"
 require "table_print"
 
 class FilesCheck
-attr_reader :file_list
+  attr_reader :file_list
   def initialize(name)
     @name = name
     @file_list = []
@@ -12,11 +12,12 @@ attr_reader :file_list
 
   def instruction
     puts "Hello, this is a files check process. It will check whether your URL is valid or not first. If it is valid, it will further check whether is a supported file type. The supported file types for this process are .pdf and .doc. Although you provide unsupported files or not valid file, it will ask you to provide the valid and supported file types document again. If you wish to leave the process, simply type 3 to respond.".colorize(:blue)
-    puts "--" *30
+    puts "--" * 30
     income_proof
   end
 
   private
+
   def income_proof
     puts "provide the proof of income document URL (only .pdf or .doc): ".colorize(:light_blue)
     leave_request
@@ -24,6 +25,7 @@ attr_reader :file_list
     url = gets.chomp
     return income_proof unless valid_file_check(url)
     return income_proof unless file_type_check(url)
+
     two_forms_of_identity
   end
 
@@ -36,13 +38,12 @@ attr_reader :file_list
       url = gets.chomp
       return two_forms_of_identity unless valid_file_check(url)
       return two_forms_of_identity unless file_type_check(url)
+
       file_arr << url
       break if file_arr.size == 2
     end
     retailer_quote
   end
-
-
 
   def retailer_quote
     puts "Provide the eligible quote URL (only .pdf or .doc): ".colorize(:light_blue)
@@ -52,6 +53,7 @@ attr_reader :file_list
     file_type = File.extname(URI.parse(url).path)
     return retail quote unless valid_file_check(url)
     return retail quote unless file_type_check(url)
+
     eligible_quote(url)
   end
 
@@ -72,36 +74,37 @@ attr_reader :file_list
       tp csv.map { |row| row.to_hash }, { :NAME => { display_name: "Company Name" } }, { :URL => { width: 35 } }
     end
   end
-  
+
   def valid_file_check(url)
-  loop do
-    if url =~ URI::regexp
-      puts "It's a valid URL."
-      return true
-    elsif url == "3"
-      exit
-    else
-      puts "It's not a valid file URL.".colorize(:light_yellow)
-      return false
+    loop do
+      if url =~ URI::regexp
+        puts "It's a valid URL."
+        return true
+      elsif url == "3"
+        exit
+      else
+        puts "It's not a valid file URL.".colorize(:light_yellow)
+        return false
+      end
+      break if url == "0" || url =~ URI::regexp
     end
-  break if url == "0" || url =~ URI::regexp 
   end
-  end
+
   def file_type_check(url)
-  loop do
-    file_type = File.extname(URI.parse(url).path)
-    if file_type == ".pdf" || file_type == ".doc"
-      puts "File upload succeeded.".colorize(:red)
-      puts " "
-      @file_list << url
-      return true
-    else
-      puts "Upload failed, please provide .pdf or .doc document.".colorize(:light_yellow)
-      puts " "
-      return false
+    loop do
+      file_type = File.extname(URI.parse(url).path)
+      if file_type == ".pdf" || file_type == ".doc"
+        puts "File upload succeeded.".colorize(:red)
+        puts " "
+        @file_list << url
+        return true
+      else
+        puts "Upload failed, please provide .pdf or .doc document.".colorize(:light_yellow)
+        puts " "
+        return false
+      end
+      break if file_type == ".pdf" || file_type == ".doc"
     end
-  break if file_type == ".pdf" || file_type == ".doc"
-  end
   end
 
   def leave_request

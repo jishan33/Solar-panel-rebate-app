@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files         = Dir.chdir(File.expand_path('..', __FILE__)) do
+  spec.files = Dir.chdir(File.expand_path('..', __FILE__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   end
   spec.bindir        = "exe"
@@ -30,8 +30,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'colorize', '~> 0.8.1'
 end
 # use this the format above to add differet gen
-#different datas of our gem
+# different datas of our gem
 
-#curl -u jishan https://rubygems.org/api/v1/api_key.yaml > ~/.gem/credentials; chmod 0600 ~/.gem/credentials
+# curl -u jishan https://rubygems.org/api/v1/api_key.yaml > ~/.gem/credentials; chmod 0600 ~/.gem/credentials
 
 # gem push pkg/jishan_fast_track_gem-0.1.0.gem

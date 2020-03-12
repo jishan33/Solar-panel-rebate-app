@@ -8,8 +8,6 @@ john.instruction
 john_files = FilesCheck.new("John Files")
 john_files.instruction
 
-
-
 list_zone_1 = ManageList.new("zone 1")
 list_zone_2 = ManageList.new("zone 2")
 
@@ -27,17 +25,3 @@ p ManageList.display_processing_number
 
 john_rebate = RebateCalculator.new
 john_rebate.instruction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
