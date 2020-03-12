@@ -9,15 +9,9 @@ TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
-Install the gem on your local system:
-
-```
-gem install jishan_fast_track_gem
-```
-
-And then execute:
-
-    $ jishan_fast_track_gem
+ - Clone the repository
+ - Run bundle install
+ - run `./bin/jishan_solar_rebate`
 
 
 ## Usage
