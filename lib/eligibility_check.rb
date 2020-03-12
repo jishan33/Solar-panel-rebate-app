@@ -4,7 +4,7 @@ require 'colorize'
 require 'gemoji'
 
 
-class Eligibility_check
+class EligibilityCheck
   def initialize(name)
     @name = name
     @answers =[]

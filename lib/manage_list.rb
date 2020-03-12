@@ -1,5 +1,5 @@
 
-class Manage_list
+class ManageList
 attr_reader :list_detail
 @@processing_number = 0
   def initialize(name)

@@ -2,7 +2,7 @@ require 'csv'
 require 'colorize'
 
 
-class Rebate_calculator
+class RebateCalculator
   def initialize
     @postcode = 0
     @kw = 0

@@ -3,7 +3,7 @@ require "csv"
 require "colorize"
 require "table_print"
 
-class Files_check
+class FilesCheck
 attr_reader :file_list
   def initialize(name)
     @name = name
