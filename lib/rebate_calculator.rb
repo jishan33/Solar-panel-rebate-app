@@ -21,6 +21,8 @@ class Rebate_calculator
     stc_calculator
   end
 
+  private
+
   def stc_calculator
     @stc = (@kw * @stc_rating * @deeming_year).floor
     rebate
@@ -30,9 +32,10 @@ class Rebate_calculator
   stc_value = 37.5
   rebate_amount = @stc * stc_value
     if rebate_amount > 1888 
-      puts "Total amount of your solar panel rebate has reach the maximun, which is $1888 aud.".colorize(:red)
+      puts "Total amount of your solar panel rebate has reach the maximum, which is $1888 aud.".colorize(:red)
     else
       puts "Total amount of your solar panel rebate is $#{rebate_amount} aud".colorize(:red)
     end
+    rebate_amount
   end
 end
