@@ -10,7 +10,7 @@ require_relative 'manage_lists'
 john = Solar_panel_rebate_egilibility_check.new
 # john.ower_of_the_property
 john_files = Provided_files_check.new
-john_files.income_proof
+# john_files.income_proof
 
 # list_zone_1 = Manage_list.new
 # list_zone_2 = Manage_list.new
@@ -26,6 +26,11 @@ john_files.income_proof
 # p list_zone_2.list_detail
 
 # p Manage_list.display_processing_number
+
+john_rebate = Rebate_calculator.new
+john_rebate.stc_postcode_rating(3163)
+john_rebate.stc_calculator(5.3, 5)
+
 
 
 

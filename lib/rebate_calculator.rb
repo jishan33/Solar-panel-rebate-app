@@ -1,4 +1,5 @@
 require 'csv'
+require 'colorize'
 
 class Rebate_calculator
   def initialize
@@ -18,11 +19,16 @@ class Rebate_calculator
 
   def stc_calculator(kw, deeming_year)
     @stc = (kw * @stc_rating * deeming_year).floor
+    rebate
   end
 
   def rebate
   stc_value = 37.5
   rebate_amount = @stc * stc_value
-  rebate_amount > 1888 ? 1888 : rebate_amount
+    if rebate_amount > 1888 
+      puts "Total amount of your solar panel rebate has reach the maximun, which is $1888 aud.".colorize(:red)
+    else
+      puts "Total amount of your solar panel rebate is $#{rebate_amount} aud".colorize(:red)
+    end
   end
 end

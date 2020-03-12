@@ -3,7 +3,7 @@ require "csv"
 require "colorize"
 require "table_print"
 
-class Provided_files_check
+class Files_check
   def initialize
   end
 

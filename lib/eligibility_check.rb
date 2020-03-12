@@ -4,7 +4,7 @@ require 'colorize'
 require 'gemoji'
 
 
-class Solar_panel_rebate_egilibility_check
+class Eligibility_check
   def initialize
     @answers =[]
   end
