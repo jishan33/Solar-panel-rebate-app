@@ -6,7 +6,6 @@ require_relative 'manage_list'
 
 #  write the intro
 # Help file includes *comprehensive* instructions which *accurately* describe: steps to install the application; dependencies required by the application; system/hardware requirements; features of the application.
-
 john = Eligibility_check.new("John")
 # john.instruction
 john_files = Files_check.new("John Files")

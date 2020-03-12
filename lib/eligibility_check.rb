@@ -60,7 +60,8 @@ class Eligibility_check
 
   def eligibility_response
     if @answers.size == 0
-       puts "Congrats! You are eligible for solar panel rebate #{Emoji.find_by_alias("clap").raw} #{Emoji.find_by_alias("clap").raw} #{Emoji.find_by_alias("clap").raw}".colorize(:red)
+        clap = Emoji.find_by_alias("clap").raw + " "
+        puts "Congrats! You are eligible for solar panel rebate #{clap * 3}".colorize(:red)
     else 
       puts "Sorry, you are not eligible for solar panel rebate program."
     end

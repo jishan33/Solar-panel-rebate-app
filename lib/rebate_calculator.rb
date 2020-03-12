@@ -24,8 +24,10 @@ class Rebate_calculator
       if postcode > 9999
       puts "It's not a valid postcode, please type a valid postcode.".colorize(:light_yellow)
       end
-    break if postcode < 9999
      @postcode = postcode
+      if postcode < 9999
+        break
+      end
     end
     
     puts "How many kilowatt is your future solar panel?"
@@ -50,6 +52,9 @@ class Rebate_calculator
 
   def stc_calculator
     @stc = (@kw * @stc_rating * @deeming_year).floor
+
+        p self
+    
     rebate
   end
 
