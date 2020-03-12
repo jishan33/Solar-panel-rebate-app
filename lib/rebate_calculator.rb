@@ -1,15 +1,29 @@
 require 'csv'
 require 'colorize'
 
+
 class Rebate_calculator
-  def initialize(postcode, kw, deeming_year)
-    @postcode = postcode
-    @kw = kw
-    @deeming_year = deeming_year
+  def initialize
+    @postcode = 0
+    @kw = 0
+    @deeming_year = 0
     @stc_rating = 0
     @stc = 0
   end
 
+  def ask_parameters
+    puts "what is your postcode?"
+      postcode = gets.chomp.to_i
+      @postcode = postcode
+    puts "How many kilowatt is your future solar panel?"
+      kw = gets.chomp.to_i
+      @kw = kw
+    puts "What is the lifetime of your future solar panel?"
+      deeming_year = gets.chomp.to_i
+      @deeming_year = deeming_year
+    stc_postcode_rating
+  end
+  private
   def stc_postcode_rating
     csv_text = File.read(__dir__ + '/stc_rating.csv')
     csv = CSV.parse(csv_text, headers: true)
@@ -20,8 +34,6 @@ class Rebate_calculator
     @stc_rating = result['Rating'].to_f
     stc_calculator
   end
-
-  private
 
   def stc_calculator
     @stc = (@kw * @stc_rating * @deeming_year).floor

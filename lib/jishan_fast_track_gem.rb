@@ -8,7 +8,7 @@ require_relative 'manage_list'
 # Help file includes *comprehensive* instructions which *accurately* describe: steps to install the application; dependencies required by the application; system/hardware requirements; features of the application.
 
 john = Eligibility_check.new("John")
-john.ower_of_the_property
+# john.ower_of_the_property
 john_files = Files_check.new("John Files")
 # john_files.income_proof
 
@@ -27,8 +27,8 @@ john_files = Files_check.new("John Files")
 
 # p Manage_list.display_processing_number
 
-john_rebate = Rebate_calculator.new(3163, 5, 7)
-john_rebate.stc_postcode_rating
+john_rebate = Rebate_calculator.new
+john_rebate.ask_parameters
 
 
 
