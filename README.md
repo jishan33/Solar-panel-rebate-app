@@ -21,16 +21,16 @@ Also, providing the rebate assessment and the eligibility check on the same plat
 
 The target audiences are the property owners with less than 180,000 households combined income who would like to install some solar panels on their properties.  
 
-This terminal app is a comparably easy process for them to use. They probably would play around with this app to have some basic ideas about this rebate program. And further, apply it with the requi`red documents.
+This terminal app is a comparably easy process for them to use. They probably would play around with this app to have some basic ideas about this rebate program. And further, apply it with the required documents.
 
 Three features description
 ----------------------------
-### Check Rebate Eligability
+### Check Rebate Eligibility
 
-The program will prompt the user with several yes/no questions. Based on the users response to these questions, the program will determine whether or not the user is eligable for the solar panel rebate program. The users answers will be put into an array and rules from the Victoria solar panel rebate information website (see references) will be used to determine eligability based on the users responses once all responses have been collected.
+The program will prompt the user with several yes/no questions. Based on the users’ response to these questions, the program will determine whether or not the user is eligible for the solar panel rebate program. The users’ answers will be put into an array and rules from the Victoria solar panel rebate information website (see references) will be used to determine eligibility based on the users’ responses once all responses have been collected.
 
 ### Check Required Files
-As part of the application process for the rebate, several documents need to be collected including proof of income, two forms of identification and a quote from an certified retailer. The application will prompt the user for a link to the above and assist in ensuring that the links provided are valid urls to a supported file type (pdf or doc file). In the case of the quote, the domain of the url is used to check that the quote comes from a retail from the CEC (Clean Energy Council) approved solar retailers (see references) in Victoria. During this process, the user can also opt to exit the program at any time by providing a '0' as a response.
+As part of the application process for the rebate, several documents need to be collected including proof of income, two forms of identification and a quote from a certified retailer. The application will prompt the user for a link to the above and assist in ensuring that the links provided are valid URLs to a supported file type (pdf or doc file). In the case of the quote, the domain of the URL is used to check that the quote comes from a retailer from the CEC (Clean Energy Council) approved solar retailers (see references) in Victoria. During this process, the user can also opt to exit the program at any time by providing a '0' as a response.
 
 ### Calculate Solar Panel Rebate
 Finally, the program will prompt the user for the details of their solar installation and postcode. Based on this information, it will apply the Small-scale Technology Certificates (STC) equation (see references) in order to determine the number of STC's for the installation. The program will then multiply this number by the current market value of STC's at the time of implementation (see references).
@@ -79,7 +79,7 @@ Usage
 Run `./bin/jishan_solar_rebate`
 
 
-This is a command line application rather than a library so no need to add anything to your Gemfile.
+This is a command-line application rather than a library so no need to add anything to your Gemfile.
 
 Script to run the application has been included in the `bin` directory for ease of use.
 
@@ -88,19 +88,20 @@ After running the application, you will be provided with instructions.
 
 Reference
 ---------------------
-  Victoria solar panel rebate information
-  https://www.solar.vic.gov.au/solar-panel-rebate
+ Victoria solar panel rebate information
+https://www.solar.vic.gov.au/solar-panel-rebate
 
-  Postsode ratings for photovoltaic systems 
-  http://www.cleanenergyregulator.gov.au/DocumentAssets/Documents/Postcode%20zone%20ratings%20and%20postcode%20zones%20for%20solar%20panel%20systems.pdf  
+ Postcode ratings for photovoltaic systems 
+http://www.cleanenergyregulator.gov.au/DocumentAssets/Documents/Postcode%20zone%20ratings%20and%20postcode%20zones%20for%20solar%20panel%20systems.pdf  
 
-  STCs (Small_scale Technology Certificates) equation 
-  http://www.solazone.com.au/solar-power/off-grid-solar-power/calculating-stcs/
+  STCs (Small_scale Technology Certificates) equation  
+http://www.solazone.com.au/solar-power/off-grid-solar-power/calculating-stcs/
 
-  CEC (Clean Energy Council) approved solar retailers in Australia
-  https://www.greenwire.com.au/clean-energy-council-approved-solar-retailers/
+ CEC (Clean Energy Council) approved solar retailers in Australia
+https://www.greenwire.com.au/clean-energy-council-approved-solar-retailers/
 
-  STCs current market value
-  https://www.tradeingreen.com.au/prices-93.html
+ STCs current market value
+https://www.tradeingreen.com.au/prices-93.html
 
   
+
