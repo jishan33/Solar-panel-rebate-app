@@ -5,28 +5,31 @@ require "table_print"
 
 class FilesCheck
   attr_reader :file_list
+
   def initialize(name)
     @name = name
     @file_list = []
   end
 
-  def instruction
-    puts "Hello, this is a files check process. It will check whether your URL is valid or not first. If it is valid, it will further check whether is a supported file type. The supported file types for this process are .pdf and .doc. Although you provide unsupported files or not valid file, it will ask you to provide the valid and supported file types document again. If you wish to leave the process, simply type 3 to respond.".colorize(:blue)
-    puts "--" * 30
+  def start_process
+    instruction
     income_proof
+    two_forms_of_identity
+    retailer_quote
   end
 
   private
+  def instruction
+    puts "Hello, this is a files check process. It will check whether your URL is valid or not first. If it is valid, it will further check whether is a supported file type. The supported file types for this process are .pdf and .doc. Although you provide unsupported files or not valid file, it will ask you to provide the valid and supported file types document again. If you wish to leave the process, simply type 3 to respond.".colorize(:blue)
+    puts "--" * 30
+  end
 
   def income_proof
     puts "provide the proof of income document URL (only .pdf or .doc): ".colorize(:light_blue)
     leave_request
-
     url = gets.chomp
     return income_proof unless valid_file_check(url)
     return income_proof unless file_type_check(url)
-
-    two_forms_of_identity
   end
 
   def two_forms_of_identity
@@ -34,26 +37,21 @@ class FilesCheck
     loop do
       puts "provide identity documents' URL in total two (only .pdf or .doc): ".colorize(:light_blue)
       leave_request
-
       url = gets.chomp
       return two_forms_of_identity unless valid_file_check(url)
       return two_forms_of_identity unless file_type_check(url)
-
       file_arr << url
       break if file_arr.size == 2
     end
-    retailer_quote
   end
 
   def retailer_quote
     puts "Provide the eligible quote URL (only .pdf or .doc): ".colorize(:light_blue)
     leave_request
-
     url = gets.chomp
     file_type = File.extname(URI.parse(url).path)
     return retail quote unless valid_file_check(url)
     return retail quote unless file_type_check(url)
-
     eligible_quote(url)
   end
 
@@ -78,7 +76,7 @@ class FilesCheck
   def valid_file_check(url)
     loop do
       if url =~ URI::regexp
-        puts "It's a valid URL."
+        puts "It's a valid URL.".colorize(:red)
         return true
       elsif url == "3"
         exit

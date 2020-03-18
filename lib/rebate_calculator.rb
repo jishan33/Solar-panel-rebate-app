@@ -10,12 +10,18 @@ class RebateCalculator
     @stc = 0
   end
 
-  def instruction
-    puts "Hello, this is a rebate calculator. If you don't have the following information with you, this calculator can not evaluate the accurate rebate amount for you. The required information is the postcode, kilowatt and solar panel lifetime. Note. if your response is not in numbers, the rebate amount will always be zero. Also please make sure the provided postcode is accurate. Thank you.".colorize(:light_blue)
+  def start_process
+    instruction
     ask_parameters
+    stc_postcode_rating
+    stc_calculator
+    rebate
   end
 
   private
+  def instruction
+    puts "Hello, this is a rebate calculator. If you don't have the following information with you, this calculator can not evaluate the accurate rebate amount for you. The required information is the postcode, kilowatt and solar panel lifetime. Note. if your response is not in numbers, the rebate amount will always be zero. Also please make sure the provided postcode is accurate. Thank you.".colorize(:light_blue)
+  end
 
   def ask_parameters
     loop do
@@ -36,10 +42,7 @@ class RebateCalculator
     puts "What is the lifetime of your future solar panel?"
     deeming_year = gets.chomp.to_i
     @deeming_year = deeming_year
-    stc_postcode_rating
   end
-
-  private
 
   def stc_postcode_rating
     csv_text = File.read(__dir__ + '/stc_rating.csv')
@@ -49,12 +52,10 @@ class RebateCalculator
       @postcode >= stc_table['Postcode from'].to_i && @postcode <= stc_table['Postcode to'].to_i
     end
     @stc_rating = result['Rating'].to_f
-    stc_calculator
   end
 
   def stc_calculator
     @stc = (@kw * @stc_rating * @deeming_year).floor
-    rebate
   end
 
   def rebate

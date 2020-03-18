@@ -1,29 +1,35 @@
-require 'uri'
-require 'csv'
-require 'colorize'
-require 'gemoji'
+require "uri"
+require "csv"
+require "colorize"
+require "gemoji"
 
 class EligibilityCheck
   def initialize(name)
     @name = name
-    @answers = []
+    @no_arr = []
   end
 
-  def instruction
-    puts "Hello, this is a solar panel rebate eligibility check process, please follow the questions and them with a valid input 1 is yes and 2 is no. Simply type 1 or 2 will be sufficient. Although you respond with any other inputs, this program will guide you through the whole process. if you wish to leave the process type 3 as your response.".colorize(:blue)
-    puts "---" * 20
-    ower_of_the_property
+  def start_process
+    instruction
+    owner_of_the_property 
+    received_solar_rebate_before
+    existed_solar_panel
+    combined_houshold_income
+    property_value
+    eligibility_response
   end
 
   private
+  def instruction
+    puts "Hello, this is a solar panel rebate eligibility check process, please follow the questions and them with a valid input 1 is yes and 2 is no. Simply type 1 or 2 will be sufficient. Although you respond with any other inputs, this program will guide you through the whole process. if you wish to leave the process type 3 as your response.".colorize(:blue)
+    puts "---" * 20
+  end
 
-  def ower_of_the_property
+  def owner_of_the_property
     puts "Are you the property owner and the current occupier?".colorize(:light_blue)
     user_input_options
     answer = gets.chomp.to_i
-    return ower_of_the_property unless answer_check(answer)
-
-    received_solar_rebate_before
+    return owner_of_the_property unless answer_check(answer)
   end
 
   def received_solar_rebate_before
@@ -31,18 +37,13 @@ class EligibilityCheck
     user_input_options
     answer = gets.chomp.to_i
     return received_solar_rebate_before unless answer_check(answer)
-
-    existed_solar_panel
   end
 
   def existed_solar_panel
     puts "Is this your first solar panel installation?".colorize(:light_blue)
     user_input_options
-
     answer = gets.chomp.to_i
     return existed_solar_panel unless answer_check(answer)
-
-    combined_houshold_income
   end
 
   def combined_houshold_income
@@ -50,21 +51,17 @@ class EligibilityCheck
     user_input_options
     answer = gets.chomp.to_i
     return combined_houshold_income unless answer_check(answer)
-
-    property_value
   end
 
   def property_value
-    puts "Is your property value less than $3 millions?" .colorize(:light_blue)
+    puts "Is your property value less than $3 millions?".colorize(:light_blue)
     user_input_options
     answer = gets.chomp.to_i
     return property_value unless answer_check(answer)
-
-    eligibility_response
   end
 
   def eligibility_response
-    if @answers.size == 0
+    if @no_arr.size == 0
       clap = Emoji.find_by_alias("clap").raw + " "
       puts "Congrats! You are eligible for solar panel rebate #{clap * 3}".colorize(:red)
     else
@@ -73,7 +70,6 @@ class EligibilityCheck
   end
 
   def answer_check(answer)
-    while answer != 1 || answer != 2
       if answer == 1
         puts "Please read the next line #{Emoji.find_by_alias("point_right").raw}.".colorize(:light_yellow)
         puts " "
@@ -81,7 +77,7 @@ class EligibilityCheck
       elsif answer == 2
         puts "Please read the next line #{Emoji.find_by_alias("point_right").raw}.".colorize(:light_yellow)
         puts " "
-        @answers << answer
+        @no_arr << answer
         return true
       elsif answer == 3
         exit
@@ -89,8 +85,7 @@ class EligibilityCheck
         puts "It is no a valid input. Please type 1. yes or 2. no."
         puts " "
         return false
-      end
-    end
+      end 
   end
 
   def user_input_options
