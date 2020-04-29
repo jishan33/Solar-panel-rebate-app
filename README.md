@@ -71,7 +71,7 @@ Implementation Plan
 ----------------------------
 
 Please refer to my [Trello board](https://trello.com/b/QiHS8LxP/t1a2)
-
+![control-flow-digram](/home/jishan/Desktop/coder-academy/JishanLu_T1A2/docs/control-flow-digram.svg)
 
 
 Requirements
