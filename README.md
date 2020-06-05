@@ -20,6 +20,16 @@ The target audiences are the property owners with less than 180,000 household in
 
 This terminal app is a comparably easy process for them to use. They probably would play around with this app to have some basic ideas about this rebate program. And further, apply for it with the required documents.
 
+![control-flow-digram](/docs/control-flow-d1.png)
+![control-flow-digram](/docs/control-flow-d2.png)
+![control-flow-digram](/docs/control-flow-d3.png)
+
+
+
+![Screenshot](/docs/Solar-panel-rebate.png)
+
+
+
 ### Functions to be implemented:
 - `instruction (eligibility check)`
     - This function can kick off the application by presenting the user with a description of how to use the program and kick off the initial sequence of questions.
@@ -92,7 +102,7 @@ Installation
 
 Usage
 ---
-Run `./bin/jishan_solar_rebate`
+Run `./bin/jishan_solar_panel_rebate` 
 
 
 This is a command-line application rather than a library so no need to add anything to your Gemfile.

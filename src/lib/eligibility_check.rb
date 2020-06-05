@@ -10,6 +10,7 @@ class EligibilityCheck
   end
 
   def start_process
+    render_ascii_art
     instruction
     owner_of_the_property 
     received_solar_rebate_before
@@ -19,7 +20,12 @@ class EligibilityCheck
     eligibility_response
   end
 
+  def render_ascii_art
+    puts file_contents = CSV.read("./lib/image")
+  end
+
   private
+
   def instruction
     puts "Hello, this is a solar panel rebate eligibility check process, please follow the questions and them with a valid input 1 is yes and 2 is no. Simply type 1 or 2 will be sufficient. Although you respond with any other inputs, this program will guide you through the whole process. if you wish to leave the process type 3 as your response.".colorize(:blue)
     puts "---" * 20
