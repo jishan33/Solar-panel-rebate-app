@@ -1,5 +1,5 @@
 ### Source control respository
-https://github.com/jishan33/T1A2
+https://github.com/jishan33/Solar-panel-rebate-app
 
 
 Software Development Plan
